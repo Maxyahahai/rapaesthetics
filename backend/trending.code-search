@@ -1,0 +1,60 @@
+# Query: trending
+# ContextLines: 1
+
+23 results - 3 files
+
+backend\models\wallpaperModel.js:
+  10    source: { type: String, default: "api" },
+  11:   \
+
+backend\routes\wallpaperRoutes.js:
+  1  import express from "express";
+  2: import { getWallpapers, addWallpaper, searchWallpapers, getTrendingWallpapers } from "../controllers/wallpaperController.js";
+  3  
+
+  6  router.get("/search", searchWallpapers);
+  7: router.get("/trending", getTrendingWallpapers);  // NEW ROUTE
+  8  router.get("/", getWallpapers);
+
+frontend\src\App.jsx:
+   76  
+   77: const TrendingSection = ({ trending }) => {
+   78:   const dhh = trending.filter(w => w.category === "DHH");
+   79:   const western = trending.filter(w => w.category === "Western");
+   80:   const global = trending.filter(w => w.category === "Global" || !w.category);
+   81  
+
+   86            <h2 className="text-2xl font-bold text-white mb-6 px-2">
+   87:             🔥 Trending in DHH
+   88            </h2>
+
+   99            <h2 className="text-2xl font-bold text-white mb-6 px-2">
+  100:             🌎 Trending Worldwide
+  101            </h2>
+
+  112            <h2 className="text-2xl font-bold text-white mb-6 px-2">
+  113:             🔥 Trending Albums
+  114            </h2>
+
+  163    const [wallpapers, setWallpapers] = useState([]);
+  164:   const [trending, setTrending] = useState([]);
+  165    const [isLoading, setIsLoading] = useState(false);
+
+  167  
+  168:   // Fetch trending on mount
+  169    useEffect(() => {
+  170:     const fetchTrending = async () => {
+  171        try {
+  172:         const response = await fetch('http://localhost:5000/api/wallpapers/trending');
+  173          const data = await response.json();
+  174:         setTrending(data);
+  175        } catch (error) {
+  176:         console.error('Failed to fetch trending:', error);
+  177        }
+  178      };
+  179:     fetchTrending();
+  180    }, []);
+
+  217        ) : (
+  218:         <TrendingSection trending={trending} />
+  219        )}
