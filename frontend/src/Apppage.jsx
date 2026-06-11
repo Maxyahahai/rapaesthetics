@@ -411,13 +411,13 @@ function AppPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div style={{ minHeight: '100vh', background: 'var(--color-bg-primary)', color: 'var(--color-text-primary)', fontFamily: 'var(--font-primary)' }}>
       <div ref={wallpaperSectionRef}>
-        <header className="p-6 border-b border-gray-800 relative">
+       <header style={{ padding: '20px 40px', borderBottom: '1px solid rgba(255,255,255,0.06)', position: 'relative', background: 'rgba(10,10,10,0.95)', backdropFilter: 'blur(10px)', position: 'sticky', top: 0, zIndex: 100 }}>
           <div className="text-center">
-            <h1 className="font-bold text-4xl bg-gradient-to-r from-orange-600 to-pink-500 bg-clip-text text-transparent">
-              RapAesthetics
-            </h1>
+            <h1 style={{ fontSize: '24px', fontWeight: '700', letterSpacing: '-0.5px' }}>
+  Rap<span style={{ color: 'var(--color-accent-purple)' }}>Aesthetics</span>
+</h1>
             <p className="mt-2 text-sm font-medium bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(192,38,211,0.5)]">
               Transform your favorite hip-hop albums into stunning wallpapers
             </p>
