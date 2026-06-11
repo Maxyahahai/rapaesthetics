@@ -19,20 +19,24 @@ const SearchBar = ({ onSearch, isLoading }) => {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
       <div className="relative">
-        <div className="flex items-center bg-gray-800 rounded-full shadow-2xl border border-gray-700 focus-within:border-purple-500 transition-all">
+        <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-pill)', border: '1px solid rgba(255,255,255,0.1)', transition: 'border-color 0.2s' }}
+  onFocus={e => e.currentTarget.style.borderColor = 'var(--color-accent-purple)'}
+  onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
+>
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
             placeholder="Search for your favorite album..."
-            className="flex-1 bg-transparent text-white px-6 py-4 text-lg outline-none placeholder-gray-400"
+            style={{ flex: 1, background: 'transparent', color: '#fff', padding: '14px 24px', fontSize: '15px', outline: 'none', border: 'none', fontFamily: 'var(--font-primary)' }}
+placeholder="Search for your favorite album..."
             disabled={isLoading}
           />
           <button
             onClick={handleSubmit}
             disabled={isLoading || !query.trim()}
-            className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white rounded-full p-4 m-1 transition-all"
+            style={{ background: 'var(--color-accent-purple)', border: 'none', borderRadius: 'var(--radius-pill)', padding: '10px 20px', margin: '4px', cursor: 'pointer', color: '#fff', fontFamily: 'var(--font-primary)', fontWeight: '600', fontSize: '14px' }}
           >
             {isLoading ? (
               <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
