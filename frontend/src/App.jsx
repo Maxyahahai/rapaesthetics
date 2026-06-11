@@ -296,6 +296,8 @@ function App() {
 
   const { user, isAuthenticated, logout } = useAuth();
   const searchRef = useRef(null);
+const cardsRef = useRef(null);
+const musicMatchRef = useRef(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -335,15 +337,21 @@ function App() {
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-bg-primary)', color: '#fff', fontFamily: 'var(--font-primary)' }}>
-      <Navbar
-        onEnter={scrollToSearch}
-        isAuthenticated={isAuthenticated}
-        user={user}
-        onLogin={() => setShowAuthModal(true)}
-        onLogout={logout}
-      />
+     <Navbar
+  onEnter={scrollToSearch}
+  isAuthenticated={isAuthenticated}
+  user={user}
+  onLogin={() => setShowAuthModal(true)}
+  onLogout={logout}
+  onExplore={() => cardsRef.current?.scrollIntoView({ behavior: 'smooth' })}
+  onCharts={() => cardsRef.current?.scrollIntoView({ behavior: 'smooth' })}
+  onArtists={() => cardsRef.current?.scrollIntoView({ behavior: 'smooth' })}
+  onWallpapers={() => searchRef.current?.scrollIntoView({ behavior: 'smooth' })}
+/>
       <Hero onExplore={scrollToSearch} />
-      <FloatingCards />
+      <div ref={cardsRef}>
+  <FloatingCards />
+</div>
       <StatsBar />
 
       {/* search */}
@@ -359,12 +367,14 @@ function App() {
 
       <ResultsSection results={wallpapers} isLoading={isLoading} hasSearched={hasSearched} />
 
-      <MusicMatchSection
-        user1Session={user1Session}
-        user2Session={user2Session}
-        setUser1Session={setUser1Session}
-        setUser2Session={setUser2Session}
-      />
+      <div ref={musicMatchRef}>
+  <MusicMatchSection
+    user1Session={user1Session}
+    user2Session={user2Session}
+    setUser1Session={setUser1Session}
+    setUser2Session={setUser2Session}
+  />
+</div>
 
       <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </div>

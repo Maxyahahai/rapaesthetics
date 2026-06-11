@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Navbar = ({ onEnter, isAuthenticated, user, onLogin, onLogout }) => {
+const Navbar = ({ onEnter, isAuthenticated, user, onLogin, onLogout, onExplore, onCharts, onArtists, onWallpapers }) => {
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
@@ -25,24 +25,30 @@ const Navbar = ({ onEnter, isAuthenticated, user, onLogin, onLogout }) => {
 
       {/* nav links */}
       <div style={{ display: 'flex', gap: '32px' }}>
-        {['Explore', 'Charts', 'Artists', 'Wallpapers'].map((item) => (
-            <a
-          
-            key={item}
-            href="#"
-            style={{
-              fontSize: '14px',
-              color: 'var(--color-text-secondary)',
-              textDecoration: 'none',
-              transition: 'color var(--transition-fast)',
-            }}
-            onMouseEnter={e => e.target.style.color = '#fff'}
-            onMouseLeave={e => e.target.style.color = 'var(--color-text-secondary)'}
-          >
-            {item}
-          </a>
-        ))}
-      </div>
+  {[
+    { label: 'Explore', action: onExplore },
+    { label: 'Charts', action: onCharts },
+    { label: 'Artists', action: onArtists },
+    { label: 'Wallpapers', action: onWallpapers },
+  ].map((item) => (
+    <a
+    
+      key={item.label}
+      onClick={item.action}
+      style={{
+        fontSize: '14px',
+        color: 'var(--color-text-secondary)',
+        textDecoration: 'none',
+        cursor: 'pointer',
+        transition: 'color var(--transition-fast)',
+      }}
+      onMouseEnter={e => e.target.style.color = '#fff'}
+      onMouseLeave={e => e.target.style.color = 'var(--color-text-secondary)'}
+    >
+      {item.label}
+    </a>
+  ))}
+</div>
 
       {/* auth */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>

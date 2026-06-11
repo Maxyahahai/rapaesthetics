@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
 
 const cards = [
-  { id: 1, name: 'DAMN.', artist: 'Kendrick Lamar', type: 'Album', bg: '#1a0a2e', emoji: '🟣' },
-  { id: 2, name: 'Certified Lover Boy', artist: 'Drake', type: 'Album', bg: '#2a0808', emoji: '🔴' },
-  { id: 3, name: 'KOD', artist: 'J. Cole', type: 'Album', bg: '#1a1400', emoji: '🟡' },
-  { id: 4, name: 'Astroworld', artist: 'Travis Scott', type: 'Album', bg: '#000f1a', emoji: '🌊' },
-  { id: 5, name: 'Live.Love.A$AP', artist: 'ASAP Rocky', type: 'Artist', bg: '#1a0a0a', emoji: '🌹' },
-  { id: 6, name: 'Igor', artist: 'Tyler, The Creator', type: 'Album', bg: '#0a1a0a', emoji: '🌀' },
-  { id: 7, name: 'Blonde', artist: 'Frank Ocean', type: 'Album', bg: '#0a0a1a', emoji: '🌙' },
-  { id: 8, name: 'Mr. Morale', artist: 'Kendrick Lamar', type: 'Album', bg: '#1a1a0a', emoji: '⚡' },
-  { id: 9, name: 'Scorpion', artist: 'Drake', type: 'Album', bg: '#1a0800', emoji: '🔥' },
-  { id: 10, name: 'Testing', artist: 'ASAP Rocky', type: 'Album', bg: '#0d0a1a', emoji: '💎' },
+  { id: 1, name: 'DAMN.', artist: 'Kendrick Lamar', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b2738b52c6b9bc4e43d873869699' },
+  { id: 2, name: 'Astroworld', artist: 'Travis Scott', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b27372d30546c8750c6a452bb850' },
+  { id: 3, name: 'GKMC', artist: 'Kendrick Lamar', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b273d28d2ebdedb220e479743797' },
+  { id: 4, name: 'Igor', artist: 'Tyler, The Creator', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b2735b34c9b2e4ba720e7c525a78' },
+  { id: 5, name: 'Illmatic', artist: 'Nas', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b2734ca68d59a4a29c856a4a39c2' },
+  { id: 6, name: 'Ready To Die', artist: 'Biggie', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b273d4c0f0e21559010860d91a46' },
+  { id: 7, name: 'The Chronic', artist: 'Dr. Dre', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b2737dbc0e4496d1a53687e6087b' },
+  { id: 8, name: 'Graduation', artist: 'Kanye West', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b273c5cd4e7e42d0bd3db88a5d89' },
+  { id: 9, name: 'KOD', artist: 'J. Cole', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b2737b78b304e239f62e4f80253c' },
+  { id: 10, name: 'Flower Boy', artist: 'Tyler, The Creator', type: 'Album', img: 'https://i.scdn.co/image/ab67616d0000b273b106406e9c0f27643f00d4aa' },
 ];
 
 const floatVariants = [
@@ -51,15 +51,21 @@ const Card = ({ card, index }) => {
         e.target.style.borderColor = 'rgba(255,255,255,0.08)';
       }}
     >
-      <div style={{
-        width: '100%', aspectRatio: '1',
-        borderRadius: '10px',
-        background: card.bg,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: '32px', marginBottom: '10px',
-      }}>
-        {card.emoji}
-      </div>
+     <img
+  src={card.img}
+  alt={card.name}
+  onError={e => {
+    e.target.style.display = 'none';
+    e.target.parentNode.style.background = '#1a0a2e';
+  }}
+  style={{
+    width: '100%', aspectRatio: '1',
+    borderRadius: '10px',
+    objectFit: 'cover',
+    marginBottom: '10px',
+    display: 'block',
+  }}
+/>
 
       <div style={{
         fontSize: '9px', letterSpacing: '1px', textTransform: 'uppercase',
