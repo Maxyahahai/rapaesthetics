@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Navbar = () => {
+const Navbar = ({ onEnter }) => {
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
@@ -26,6 +26,7 @@ const Navbar = () => {
 
       <div style={{ display: 'flex', gap: '32px' }}>
         {['Explore', 'Charts', 'Artists', 'Wallpapers'].map((item) => (
+            <a
           
             key={item}
             href="#"
@@ -44,6 +45,7 @@ const Navbar = () => {
       </div>
 
       <button
+        onClick={onEnter}
         style={{
           background: 'var(--color-accent-purple)',
           color: '#fff',
