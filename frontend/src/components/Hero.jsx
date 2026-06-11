@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Hero = () => {
+const Hero = ({ onExplore }) => {
   return (
     <section
       style={{
@@ -93,29 +93,33 @@ const Hero = () => {
         transition={{ duration: 0.6, delay: 0.4 }}
         style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', justifyContent: 'center' }}
       >
-        <button style={{
-          background: 'var(--color-accent-purple)',
-          color: '#fff', border: 'none',
-          borderRadius: 'var(--radius-pill)',
-          padding: '12px 28px', fontSize: '14px', fontWeight: '600',
-          cursor: 'pointer', fontFamily: 'var(--font-primary)',
-          transition: 'transform var(--transition-fast), background var(--transition-fast)',
-        }}
+        <button
+          onClick={onExplore}
+          style={{
+            background: 'var(--color-accent-purple)',
+            color: '#fff', border: 'none',
+            borderRadius: 'var(--radius-pill)',
+            padding: '12px 28px', fontSize: '14px', fontWeight: '600',
+            cursor: 'pointer', fontFamily: 'var(--font-primary)',
+            transition: 'transform var(--transition-fast), background var(--transition-fast)',
+          }}
           onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
           onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
         >
           Explore Now
         </button>
 
-        <button style={{
-          background: 'transparent',
-          color: 'var(--color-text-primary)',
-          border: '1px solid var(--color-border)',
-          borderRadius: 'var(--radius-pill)',
-          padding: '12px 28px', fontSize: '14px', fontWeight: '600',
-          cursor: 'pointer', fontFamily: 'var(--font-primary)',
-          transition: 'border-color var(--transition-fast)',
-        }}
+        <button
+          onClick={onExplore}
+          style={{
+            background: 'transparent',
+            color: 'var(--color-text-primary)',
+            border: '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-pill)',
+            padding: '12px 28px', fontSize: '14px', fontWeight: '600',
+            cursor: 'pointer', fontFamily: 'var(--font-primary)',
+            transition: 'border-color var(--transition-fast)',
+          }}
           onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--color-accent-purple)'}
           onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--color-border)'}
         >
