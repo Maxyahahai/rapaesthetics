@@ -21,7 +21,7 @@ const SearchSection = ({ onSearch, isLoading }) => {
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 24px 60px' }}>
+    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 20px 60px', boxSizing: 'border-box', width: '100%' }}>
       <div style={{
         display: 'flex', alignItems: 'center',
         background: 'rgba(255,255,255,0.05)',
