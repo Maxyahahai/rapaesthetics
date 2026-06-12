@@ -27,31 +27,32 @@ router.get('/albums', async (req, res) => {
   try {
     const token = await getToken();
 
-    const albumIds = [
-      '4eLPsYPBmXABThSJ821sqY', // DAMN. - Kendrick
-      '41GuZcammIkupMPKH2OJ6I', // Astroworld - Travis
-      '0Oet4bKSBfY9hFkNKdnMUU', // GKMC - Kendrick
-      '5zi7WsKlIiUXv09tbGLKsE', // Igor - Tyler
-      '3kEtdS2pH5yCFr3UhVMGZC', // Illmatic - Nas
-      '7GjP9GiSoSaTPTvaSSnRWp', // Ready To Die - Biggie
-      '6LY9IADNBmjzSMWqgDNzBb', // Graduation - Kanye
-      '7MXVkk9YMctZqd1Srtv4MB', // Flower Boy - Tyler
-      '4Yr7amBdpTqHBOzTMEDgJN', // KOD - J Cole
-      '1ATL5GLyefJaxhQzSPVrLX', // Scorpion - Drake
-    ].join(',');
-
+   const albumIds = [
+  '4eLPsYPBmXABThSJ821sqY', // DAMN. - Kendrick
+  '41GuZcammIkupMPKH2OJ6I', // Astroworld - Travis
+  '5zi7WsKlIiUXv09tbGLKsE', // Igor - Tyler
+  '1ATL5GLyefJaxhQzSPVrLX', // Scorpion - Drake
+  '4RVnAU35WRWra6OZ3CbbMA', // Graduation - Kanye
+  '4SZko61aMnmgvNhfhgTuD3', // SOS - SZA
+  '3RQQmkQEvNCY4prGKE6oc5', // Mr. Morale - Kendrick
+  '6MnnkXHBXsSShgPiQNHOH1', // Nayaab - Seedhe Maut
+  '5U4ZWKgrnmAdWNyLBG7DAU', // Yours Truly - KR$NA
+  '0XDtCjokUgSrL527Ftk0xE', // Kohinoor - Divine
+].join(',');
     const response = await axios.get(
       `https://api.spotify.com/v1/albums?ids=${albumIds}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
-    const albums = response.data.albums.map(album => ({
-      id: album.id,
-      name: album.name,
-      artist: album.artists[0].name,
-      img: album.images[0].url,
-      type: 'Album',
-    }));
+   const albums = response.data.albums
+  .filter(album => album !== null)
+  .map(album => ({
+    id: album.id,
+    name: album.name,
+    artist: album.artists[0].name,
+    img: album.images[0].url,
+    type: 'Album',
+  }));
 
     res.json(albums);
   } catch (error) {
