@@ -10,6 +10,7 @@ import spotifyRoutes from "./routes/spotifyRoutes.js";
 import authRoutes from "./routes/auth.js";
 import favoritesRoutes from "./routes/favorites.js";
 import wallpapersRouter from "./routes/wallpapers.js"; // ✅ new one
+import featuredRoutes from './routes/featuredRoutes.js';
 
 dotenv.config();
 
@@ -142,6 +143,7 @@ app.use("/api/wallpapers", wallpaperRoutes);
 app.use("/api/spotify", spotifyRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/favorites", favoritesRoutes);
+app.use('/api/featured', featuredRoutes);
 
 // ✅ new ones (aggregation & stats)
 app.use("/api/wallpapers", wallpapersRouter);
